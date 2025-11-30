@@ -142,7 +142,7 @@ class ApplicationPropertiesAndControllerTest {
     @Test
     @DisplayName("Find burger by id test")
     void testGetBurgerById() throws Exception {
-        given(burgerDao.findById(sampleBurger.getId())).willReturn(sampleBurger);
+        given(burgerDao.findById((long) sampleBurger.getId())).willReturn(sampleBurger);
 
         mockMvc.perform(get("/burger/{id}", sampleBurger.getId()))
                 .andExpect(status().isOk())
@@ -191,7 +191,7 @@ class ApplicationPropertiesAndControllerTest {
     @DisplayName("Find by price test")
     void testFindByPrice() throws Exception {
         List<Burger> burgers = Arrays.asList(sampleBurger);
-        given(burgerDao.findByPrice(sampleBurger.getPrice().intValue())).willReturn(burgers);
+        given(burgerDao.findByPrice(Double.valueOf(sampleBurger.getPrice().intValue()))).willReturn(burgers);
 
         mockMvc.perform(get("/burger/price/{price}", sampleBurger.getPrice().intValue()))
                 .andExpect(status().isOk())
