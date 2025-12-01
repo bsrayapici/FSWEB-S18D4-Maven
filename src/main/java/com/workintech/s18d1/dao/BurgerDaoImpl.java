@@ -66,13 +66,14 @@ public class BurgerDaoImpl implements BurgerDao{
     }
 
     @Override
+    @Transactional
     public Burger update(Burger burger) {
         return entityManager.merge(burger);
     }
 
     @Override
-    public Burger remove(Long id) {
-        Burger burger = findById(Long.valueOf(id));
+    @Transactional
+    public Burger remove(Burger burger) {
         if (burger != null) {
             entityManager.remove(burger);
         }

@@ -61,7 +61,7 @@ public class BurgerController {
         BurgerValidation.validateId(id);
         Burger burger = burgerDao.findById(id);
         BurgerValidation.checkBurgerExists(burger, id);
-        return burgerDao.remove(id);
+        return burgerDao.remove(burger);
     }
 
     @GetMapping("/findByPrice")
