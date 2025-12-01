@@ -33,7 +33,7 @@ public class BurgerDaoImpl implements BurgerDao{
     public Burger findById(Long id) {
         Burger burger = entityManager.find(Burger.class, id);
         if (burger == null) {
-            throw new BurgerException("Burger not found with id: " + id, HttpStatus.NOT_FOUND);
+            throw new BurgerException("Burger not found", HttpStatus.NOT_FOUND);
         }
         return burger;
     }

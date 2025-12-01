@@ -13,6 +13,14 @@ public class BurgerValidation {
         if (burger.getName() == null || burger.getName().isEmpty()) {
             throw new BurgerException("Burger ismi boş olamaz!", HttpStatus.BAD_REQUEST);
         }
+
+        // *** GÜNCELLEME BURADA YAPILMALIDIR ***
+        // Null kontrolü, negatif kontrolünden önce yapılmalıdır.
+        if (burger.getPrice() == null) {
+            throw new BurgerException("Burger fiyatı boş olamaz!", HttpStatus.BAD_REQUEST);
+        }
+
+        // Null kontrolü yapıldığı için, artık getPrice().doubleValue() hatası alınmaz.
         if (burger.getPrice() < 0) {
             throw new BurgerException("Fiyat negatif olamaz!", HttpStatus.BAD_REQUEST);
         }
