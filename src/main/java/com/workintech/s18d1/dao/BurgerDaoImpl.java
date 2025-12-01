@@ -73,7 +73,8 @@ public class BurgerDaoImpl implements BurgerDao{
 
     @Override
     @Transactional
-    public Burger remove(Burger burger) {
+    public Burger remove(Long id) {
+        Burger burger = findById(Long.valueOf(id));
         if (burger != null) {
             entityManager.remove(burger);
         }
